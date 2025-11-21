@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Collections;
 import java.util.LinkedList;
-public class MergeSort<E extends Comparable<E>> {
+public class MergeSort {
     public static void main(String[] args){
         List<Integer> list = new LinkedList<>();
         for(int i = 11;i >= 0;i--){
