@@ -12,15 +12,14 @@ public class MergeSort {
         System.out.println(sort(list));
 
     }
-    //0,1,2   ,3,4,5
     public static <E extends Comparable<E>> List<E> sort(List<E> list){
         int size = list.size();
-        if(size <= 1){
+        if(size <= 1){//finished util it has one or zero element left or initially only has that amount of element.
             return list;
         }
-        int mid = size/2;
-        List<E> leftlist = sort(subList(list,0,mid));
-        List<E> rightlist = sort(subList(list,mid,size));
+        int mid = size/2;//the mid point,since the menthod is exclusive for the second half.
+        List<E> leftlist = sort(subList(list,0,mid));// each time it passes a new halfed list so the left is 0 is reasonalble, and the size and mid will be updated.
+        List<E> rightlist = sort(subList(list,mid,size));//size is exclusive!
         return merge(leftlist,rightlist);
     }
     private static <E extends Comparable<E>> List<E> subList(List<E> list, int left, int right){
@@ -35,14 +34,14 @@ public class MergeSort {
 
         while(!left.isEmpty() && !right.isEmpty()){
             if(left.get(0).compareTo(right.get(0))<= 0){
-                toReturn.add(left.remove(0));
+                toReturn.add(left.remove(0));//remember we removed the correct element so next time we get(0) for the next one!
 
             }else{
                 toReturn.add(right.remove(0));
 
             }
         }
-        toReturn.addAll(left);
+        toReturn.addAll(left);//since we removed the used element, we can just add the leftover!
         toReturn.addAll(right);
         return toReturn;
     }
